@@ -29,15 +29,16 @@ module.exports = function (injectedStore) {
             user.id = nanoid();
         }
 
-        if (body.password || body.username) {
-            await auth.upsert({
-                id: user.id,
-                username: user.username,
-                password: body.password,
-            })
-        }
 
-        return store.upsert(TABLA, user);
+
+        return await auth.upsert({
+            id: user.id,
+            username: user.username,
+            password: body.password,
+        })
+
+
+
     }
 
     return {
