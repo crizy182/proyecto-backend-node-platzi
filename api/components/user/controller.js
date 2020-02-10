@@ -29,15 +29,11 @@ module.exports = function (injectedStore) {
             user.id = nanoid();
         }
 
-
-
         return await auth.upsert({
             id: user.id,
             username: user.username,
             password: body.password,
         })
-
-
 
     }
 
